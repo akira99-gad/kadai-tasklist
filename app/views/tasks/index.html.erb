@@ -1,18 +1,14 @@
-<% if logged_in? %>
-  
-  <h1>タスク一覧</h1>
+<h1>タスク一覧</h1>
 
-  <ul>
+<ul>
+    <% unless @tasks.nil? %>
       <% @tasks.each do |task| %>
         <li><%= link_to task.id, task %> : <%= task.status %> : <%= task.content %></li>
       <% end %>
-  </ul>
-
-  <%= link_to "タスクの作成", new_task_path %>
+    <% end %>
   
-<% else %>
-  <div>
-    <h1>Welcome to Tasklist</h1>
-    <%= link_to "Sign up now!", signup_path %>
-  </div>
-<% end %>
+</ul>
+
+
+
+<%= link_to "タスクの作成", new_task_path %>

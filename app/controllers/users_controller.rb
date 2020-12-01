@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
   
+  def index
+    @users = User.all.page(params[:page])
+  end
 
   def show
     @user = User.find(params[:id])
@@ -15,7 +18,7 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = "ユーザを登録しました"
-      redirect_to @user　#Login画面に遷移
+      redirect_to :root
       
     else
       flash.now[:danger] = "ユーザの登録に失敗しました"
