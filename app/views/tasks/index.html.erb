@@ -1,10 +1,8 @@
 <h1>タスク一覧</h1>
 
 <ul>
-    <% unless @tasks.nil? %>
-      <% @tasks.each do |task| %>
-        <li><%= link_to task.id, task %> : <%= task.status %> : <%= task.content %></li>
-      <% end %>
+    <% @tasks.each do |task| %>
+      <li><%= link_to task.id, task %> : <%= task.status %> : <%= task.content %></li>
     <% end %>
   
 </ul>
